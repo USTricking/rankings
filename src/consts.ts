@@ -1,3 +1,5 @@
+import { Client } from '@notionhq/client';
+
 export const SITE = {
 	title: 'US Tricking Rankings',
 	description: 'Open-source site for US Tricking Rankings',
@@ -33,3 +35,5 @@ export const SIDEBAR: Sidebar = {
 		],
 	},
 };
+
+export const notion = process.env.NOTION_API_KEY ? new Client({ auth: process.env.NOTION_API_KEY }) : null;

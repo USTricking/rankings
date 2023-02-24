@@ -150,8 +150,8 @@ If you plan to use Spanish as the default language, you just need to modify the 
 You can also remove the above script and write a landing page in Spanish instead.
 
 TODO:
-- [ ] Add a language switcher to the site header
 - [ ] Import and display data
+- [ ] Add a language switcher to the site header
 - [ ] Create license file
 - [ ] Add a license badge to the README
 - [ ] Add deployment instructions
