@@ -1,0 +1,25 @@
+---
+import type { Ranking, Rankings } from '../../models/Rankings';
+import RankingsService from '../../services/RankingsService';
+import RankingsTable from './RankingsTable.astro';
+
+const rankingsService = new RankingsService();
+
+const data: Rankings | null = await rankingsService.getOverallRankings();
+
+let sortedRankings: Ranking[], title: string, description: string;
+if (data) {
+  sortedRankings = data.rankings.sort((a, b) => b.points - a.points);
+  title = data.title;
+  description = data.description;
+} else {
+  sortedRankings = [];
+  title = 'No rankings available';
+  description = 'No rankings available';
+}
+---
+<div class='rankings'>
+  <h1>{title}</h1>
+  <p>{description}</p>
+  <RankingsTable rankings={sortedRankings} />
+</div>

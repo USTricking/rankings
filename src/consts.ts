@@ -1,5 +1,3 @@
-import { Client } from '@notionhq/client';
-
 export const SITE = {
 	title: 'US Tricking Rankings',
 	description: 'Open-source site for US Tricking Rankings',

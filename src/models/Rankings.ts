@@ -1,3 +1,5 @@
+import type { TrickingEvent } from "./TrickingEvent";
+
 export interface Rankings {
   readonly title: string;
   readonly description: string;
@@ -7,5 +9,5 @@ export interface Rankings {
 export interface Ranking {
   readonly athlete: string;
   readonly points: number;
-  readonly events: Event[];
+  readonly events: TrickingEvent[];
 }
