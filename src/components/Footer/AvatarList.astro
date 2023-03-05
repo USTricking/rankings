@@ -3,10 +3,8 @@
 type Props = {
 	path: string;
 };
-const { path } = Astro.props;
-const resolvedPath = `examples/docs/${path}`;
-const url = `https://api.github.com/repos/withastro/astro/commits?path=${resolvedPath}`;
-const commitsURL = `https://github.com/withastro/astro/commits/main/${resolvedPath}`;
+const url = `https://api.github.com/repos/USTricking/rankings/commits`;
+const commitsURL = `https://github.com/USTricking/rankings/commits/main`;
 
 type Commit = {
 	author: {
@@ -17,7 +15,7 @@ type Commit = {
 
 async function getCommits(url: string) {
 	try {
-		const token = import.meta.env.GITHUB_TOKEN ?? 'hello';
+		const token = import.meta.env.GITHUB_TOKEN ?? undefined;
 		if (!token) {
 			throw new Error('Cannot find "GITHUB_TOKEN" used for escaping rate-limiting.');
 		}
