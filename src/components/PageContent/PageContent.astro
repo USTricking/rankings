@@ -2,7 +2,6 @@
 import type { MarkdownHeading } from 'astro';
 import MoreMenu from '../RightSidebar/MoreMenu.astro';
 import TableOfContents from '../RightSidebar/TableOfContents';
-import Rankings from '../Rankings/Rankings.astro';
 
 type Props = {
 	title: string;
@@ -20,7 +19,6 @@ const { title, headings, githubEditUrl } = Astro.props;
 			<TableOfContents client:media="(max-width: 50em)" headings={headings} />
 		</nav>
 		<slot />
-		<Rankings />
 	</section>
 	<nav class="block sm:hidden">
 		<MoreMenu editHref={githubEditUrl} />

@@ -14,5 +14,3 @@ description: "US Rankings Data Intro"
 ## 👀 Want to learn more?
 
 This site is still in development, but you can see the full US Tricking League Specifications at [USTricking.com](https://www.ustricking.com/rankings)
-
-

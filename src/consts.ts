@@ -28,8 +28,8 @@ export const SIDEBAR: Sidebar = {
 	en: {
 		'Dive Deeper': [
 			{ text: '2023 Season', link: 'en/introduction' },
-			{ text: 'Events', link: 'en/page-2' },
-			{ text: 'Competitors', link: 'en/page-3' },
+			{ text: 'Events', link: 'en/events' },
+			{ text: 'Competitors', link: 'en/competitors' },
 		],
 	},
 };
