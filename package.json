@@ -2,12 +2,15 @@
 	"name": "civil-cycle",
 	"type": "module",
 	"version": "0.0.1",
+	"license": "MIT",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+    "preview": "deno run --allow-net --allow-read --allow-env ./dist/server/entry.mjs",
+    "deno-deploy": "npm run build && deployctl deploy --project=ust-rankings> --no-static --include=./dist ./dist/server/entry.mjs"
+
 	},
 	"dependencies": {
 		"@astrojs/deno": "^4.0.2",

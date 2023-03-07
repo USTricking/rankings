@@ -2,7 +2,16 @@
 import { CollectionEntry, getCollection } from 'astro:content';
 import MainLayout from '../layouts/MainLayout.astro';
 
-export async function getStaticPaths() {
+const posts = await getCollection('docs');
+
+type Props = CollectionEntry<'docs'>;
+const { slug } = Astro.params;
+const post = posts.find((page) => page.slug === slug);
+if (!post) return Astro.redirect("/404");
+const { Content, headings } = await post.render();
+/** Keeping snippet incase we return to SSG
+ 	export const prerender = true;
+  export async function getStaticPaths() {
 	const docs = await getCollection('docs');
 	return docs.map((entry) => ({
 		params: {
@@ -14,7 +23,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'docs'>;
 
 const post = Astro.props;
-const { Content, headings } = await post.render();
+const { Content, headings } = await post.render();*/
 ---
 
 <MainLayout headings={headings} {...post.data}>
