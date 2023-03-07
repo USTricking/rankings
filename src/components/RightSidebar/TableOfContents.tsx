@@ -56,13 +56,14 @@ const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
 		const headingsObserver = new IntersectionObserver(setCurrent, observerOptions);
 
 		// Observe all the headings in the main page content.
-		document.querySelectorAll('article :is(h1,h2,h3)').forEach((h) => headingsObserver.observe(h));
+		const loadedHeadings = document.querySelectorAll('article :is(h1,h2,h3)');
+		loadedHeadings.forEach((h) => headingsObserver.observe(h));
 
 		// Stop observing when the component is unmounted.
 		return () => headingsObserver.disconnect();
 	}, [toc.current]);
 
-	const onLinkClick = (e) => {
+	const onLinkClick = (e: any) => {
 		setCurrentID(e.target.getAttribute('href').replace('#', ''));
 	};
 
@@ -71,9 +72,10 @@ const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
 			<h2 id={onThisPageID} className="heading">
 				On this page
 			</h2>
+			{/** @ts-ignore*/}
 			<ul ref={toc}>
 				{headings
-					.filter(({ depth }) => depth > 1 && depth < 4)
+					.filter(({ depth }) => depth >= 1 && depth < 4)
 					.map((heading) => (
 						<li
 							className={`header-link depth-${heading.depth} ${

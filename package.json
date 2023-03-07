@@ -28,6 +28,7 @@
 		"react-dom": "^18.1.0"
 	},
 	"devDependencies": {
+		"@types/html-escaper": "^3.0.0",
 		"html-escaper": "^3.0.3"
 	}
 }

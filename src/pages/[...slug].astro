@@ -1,6 +1,5 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
-import Rankings from '../components/Rankings/Rankings.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 
 export async function getStaticPaths() {
@@ -20,5 +19,4 @@ const { Content, headings } = await post.render();
 
 <MainLayout headings={headings} {...post.data}>
 	<Content />
-	{post.slug.indexOf('introduction') >= 0 && <Rankings />}
 </MainLayout>
