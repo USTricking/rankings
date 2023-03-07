@@ -1,0 +1,60 @@
+---
+import { Divider } from '@mui/material';
+import type { Ranking } from '../../models/Rankings';
+import RankingsService from '../../services/RankingsService';
+import RankingsTable from './RankingsTable.astro';
+
+const rankingsService = new RankingsService();
+
+const data: Record<string, Ranking[]> | null = await rankingsService.getRankingsByEvents();
+
+let sortedRankings: Ranking[];
+const eventRankings: Array<Ranking[]> = [];
+const eventNames: Array<string> = [];
+if (data) {
+  Object.entries(data).forEach(([event, rankings]) => {
+    sortedRankings = rankings.sort((a, b) => b.points - a.points);
+    eventNames.push(event);
+    eventRankings.push(sortedRankings);
+  });
+}
+---
+<div class='rankings'>
+  {eventRankings.map((rankings, index) => (
+    <div class='rankings__event'>
+      <h2 class='rankings__event-title'>
+        {eventNames[index]}
+      </h2>
+      <RankingsTable rankings={rankings} />
+      <div class='spacer'/>
+      {index !== eventRankings.length - 1 && <Divider />}
+    </div>
+  ))}
+</div>
+
+<style>
+  .rankings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .rankings__event {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .rankings__event-title {
+    margin: 1rem 0;
+    text-align: left;
+  }
+
+  .spacer {
+    width: 100%;
+    height: 1rem;
+  }
+</style>
