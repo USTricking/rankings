@@ -20,5 +20,5 @@ const { Content, headings } = await post.render();
 
 <MainLayout headings={headings} {...post.data}>
 	<Content />
-	{post.slug === 'en/introduction' && <Rankings />}
+	{post.slug.indexOf('introduction') >= 0 && <Rankings />}
 </MainLayout>
