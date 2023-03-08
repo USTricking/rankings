@@ -19,8 +19,9 @@ async function getCommits(url: string) {
 		if (!token) {
 			throw new Error('Cannot find "GITHUB_TOKEN" used for escaping rate-limiting.');
 		}
-
-		const auth = `Basic ${Buffer.from(token, 'binary').toString('base64')}`;
+		const encoder = new TextEncoder();
+		const buffer = encoder.encode(token).toString();
+		const auth = `Basic ${buffer}`;
 
 		const res = await fetch(url, {
 			method: 'GET',
