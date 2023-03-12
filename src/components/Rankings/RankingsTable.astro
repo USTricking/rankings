@@ -14,6 +14,13 @@ type Props = {
 }
 
 const { rankings } = Astro.props;
+let currPlacing = 1;
+rankings.forEach((row: Ranking, index: number) => {
+  if (index > 0 && row.points < rankings[index - 1].points) {
+    currPlacing = index + 1;
+  }
+  row.placing = currPlacing;
+});
 ---
 
 <TableContainer component={Paper}>
@@ -27,9 +34,9 @@ const { rankings } = Astro.props;
       </TableRow>
     </TableHead>
     <TableBody>
-      {rankings.map((row, index) => (
+      {rankings.map((row: Ranking) => (
         <TableRow key={row.athlete}>
-          <TableCell>{index + 1}</TableCell>
+          <TableCell>{row.placing}</TableCell>
           <TableCell>{row.athlete}</TableCell>
           <TableCell>{row.points}</TableCell>
           <TableCell>{

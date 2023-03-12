@@ -10,4 +10,5 @@ export interface Ranking {
   readonly athlete: string;
   readonly points: number;
   readonly events: TrickingEvent[];
+  placing?: number;
 }
