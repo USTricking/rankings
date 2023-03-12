@@ -1,0 +1,20 @@
+---
+import Rankings from '../components/Rankings/Rankings.astro';
+import HeadCommon from '../components/HeadCommon.astro';
+import { SITE } from '../consts';
+
+const { headings, ...data } = Astro.props;
+---
+
+<html dir={data.dir} lang={data.lang} class='initial'>
+  <head>
+    <HeadCommon />
+    <title>
+			{`${data.title} ${SITE.title}`}
+		</title>
+  </head>
+  <body>
+    <Rankings />
+  </body>
+</html>
+
