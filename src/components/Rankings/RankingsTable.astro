@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import EventTag from './EventTag.astro';
 import type { Ranking } from '../../models/Rankings';
+import type React from 'react';
 
 type Props = {
   rankings: Ranking[];
@@ -21,6 +22,14 @@ rankings.forEach((row: Ranking, index: number) => {
   }
   row.placing = currPlacing;
 });
+
+const eventTagsStyles: React.CSSProperties = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '0.5rem',
+  justifyContent: 'flex-start',
+  alignItems: 'center'
+}
 ---
 
 <TableContainer component={Paper}>
@@ -39,7 +48,7 @@ rankings.forEach((row: Ranking, index: number) => {
           <TableCell>{row.placing}</TableCell>
           <TableCell>{row.athlete}</TableCell>
           <TableCell>{row.points}</TableCell>
-          <TableCell>{
+          <TableCell style={eventTagsStyles}>{
             row.events.map((event) => <EventTag event={event} />)}
           </TableCell>
         </TableRow>
