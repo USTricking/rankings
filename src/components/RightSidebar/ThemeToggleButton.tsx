@@ -69,6 +69,7 @@ const ThemeToggle: FunctionalComponent = () => {
 							aria-label={`Use ${t} theme`}
 							onChange={() => {
 								localStorage.setItem('theme', t);
+								window.dispatchEvent(new Event('themeChange'));
 								setTheme(t);
 							}}
 						/>

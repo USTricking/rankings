@@ -1,7 +1,7 @@
 ---
 import { getLanguageFromURL, KNOWN_LANGUAGE_CODES } from '../../languages';
 import { SITE } from '../../consts';
-import Logo from './Logo.astro';
+import { Logo } from './Logo';
 import SkipToContent from './SkipToContent.astro';
 import SidebarToggle from './SidebarToggle';
 import LanguageSelect from './LanguageSelect';
@@ -22,7 +22,7 @@ const lang = getLanguageFromURL(currentPage);
 		</div>
 		<div class="logo flex">
 			<a href="/">
-				<Logo width={60.6} height={48}/>
+				<Logo width={60.6} height={48} client:only='react'/>
 				<h1>{SITE.title ?? 'Documentation'}</h1>
 			</a>
 		</div>
