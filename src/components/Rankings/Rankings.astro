@@ -13,8 +13,8 @@ const rankingsService = new RankingsService();
 
 const data: Rankings | null = await rankingsService.getOverallRankings();
 
-let sortedRankings: Ranking[], title: string, description: string;
-if (data) {
+let sortedRankings: Ranking[], title: string, description;
+if (data && data.rankings) {
   sortedRankings = data.rankings.sort((a, b) => b.points - a.points);
   title = data.title;
   description = data.description;
