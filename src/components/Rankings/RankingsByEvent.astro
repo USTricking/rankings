@@ -3,23 +3,23 @@ import { Divider } from '@mui/material';
 import type { Ranking } from '../../models/Rankings';
 import RankingsService from '../../services/RankingsService';
 import RankingsTable from './RankingsTable.astro';
+import EventLegend from './EventLegend.astro';
 
 const rankingsService = new RankingsService();
 
 const data: Record<string, Ranking[]> | null = await rankingsService.getRankingsByEvents();
 
-let sortedRankings: Ranking[];
 const eventRankings: Array<Ranking[]> = [];
 const eventNames: Array<string> = [];
 if (data) {
   Object.entries(data).forEach(([event, rankings]) => {
-    sortedRankings = rankings.sort((a, b) => b.points - a.points);
     eventNames.push(event);
-    eventRankings.push(sortedRankings);
+    eventRankings.push(rankings);
   });
 }
 ---
 <div class='rankings'>
+  <EventLegend />
   {eventRankings.map((rankings, index) => (
     <div class='rankings__event'>
       <h2 class='rankings__event-title'>

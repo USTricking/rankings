@@ -2,6 +2,7 @@
 import type { Ranking, Rankings } from '../../models/Rankings';
 import RankingsService from '../../services/RankingsService';
 import RankingsTable from './RankingsTable.astro';
+import EventLegend from './EventLegend.astro';
 
 type Props = {
   noDescription?: boolean;
@@ -13,19 +14,20 @@ const rankingsService = new RankingsService();
 
 const data: Rankings | null = await rankingsService.getOverallRankings();
 
-let sortedRankings: Ranking[], title: string, description;
+let rankings: Ranking[], title: string, description;
 if (data && data.rankings) {
-  sortedRankings = data.rankings.sort((a, b) => b.points - a.points);
+  rankings = data.rankings;
   title = data.title;
   description = data.description;
 } else {
-  sortedRankings = [];
+  rankings = [];
   title = 'No rankings available';
   description = 'No rankings available';
 }
 ---
 <div class='rankings'>
   {!noDescription && <p>{description}</p>}
+  <EventLegend />
   <br/>
-  <RankingsTable rankings={sortedRankings} />
+  <RankingsTable rankings={rankings} />
 </div>

@@ -1,0 +1,55 @@
+---
+import { tierGradients } from "../../models/TrickingEvent";
+
+const gold = tierGradients[1];
+const silver = tierGradients[2];
+const bronze = tierGradients[3];
+---
+
+<div class="legend">
+  <div class="legend-item one">
+    <p>Tier 1</p>
+  </div>
+  <div class="legend-item two">
+    <p>Tier 2</p>
+  </div>
+  <div class="legend-item three">
+    <p>Tier 3</p>
+  </div>
+</div>
+
+<style define:vars={{gold, silver, bronze}}>
+  .legend {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .legend-item {
+    text-align: center;
+    height: auto;
+    width: 100px;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+    box-shadow: 0 0 0 0.05em #fff, 0 0 0 0.08em rgba(0, 0, 0, 0.15);
+  }
+
+  .legend-item > p {
+    color: #374151;
+    font-weight: 600;
+  }
+
+  .one {
+    background: var(--gold);
+  }
+
+  .two {
+    background: var(--silver);
+  }
+
+  .three {
+    background: var(--bronze);
+  }
+</style>
