@@ -1,18 +1,21 @@
 ---
 import type { TrickingEvent } from "../../models/TrickingEvent";
-
+import { tierGradients } from "../../models/TrickingEvent";
 type Props = {
   event: TrickingEvent;
-}
+};
 
 const { event } = Astro.props;
+const gold = tierGradients[1];
+const silver = tierGradients[2];
+const bronze = tierGradients[3];
 ---
 
 <span class:list={['event-tag', {one: event.tier === 1}, {two: event.tier === 2}, {three: event.tier === 3}]}>
   {event.name}
 </span>
 
-<style>
+<style define:vars={{gold, silver, bronze}}>
   .event-tag {
     border-radius: 0.375rem;
     color: #374151;
@@ -25,17 +28,17 @@ const { event } = Astro.props;
   }
 
   .one {
-    background: linear-gradient(135deg, #ffe259 10%, #ffa751 100%);
+    background: var(--gold);
     border: 1px solid #FFD700;
   }
 
   .two {
-    background: linear-gradient(135deg, #cfd9df 10%, #e2ebf0 100%);
+    background: var(--silver);
     border: 1px solid #808080;
   }
 
   .three {
-    background: linear-gradient(135deg, #c79081 10%, #dfa579 100%);
+    background: var(--bronze);
     border: 1px solid #CD7F32;
   }
 </style>
