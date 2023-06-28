@@ -18,7 +18,7 @@ export const KNOWN_LANGUAGES = {
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
-export const GITHUB_EDIT_URL = `https://github.com/USTricking/rankings`;
+export const GITHUB_EDIT_URL = `https://github.com/USTricking/rankings/blob/main/`;
 
 export type Sidebar = Record<
 	(typeof KNOWN_LANGUAGE_CODES)[number],
